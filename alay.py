@@ -1,6 +1,3 @@
-'''
-a A = 4
-'''
 def translet_to_alay(kalimat):
     huruf_alay = 'aAiIeEoOjJgGbrRsSB'
     hasil_alay = '441133007799622558'
