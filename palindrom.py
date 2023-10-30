@@ -63,3 +63,31 @@ def pop(queue):
 ```
 
 You can add these functions to your code, and they should work as expected, finding the minimum value in the queue and popping the last element without changing the queue's contents.
+
+
+Tentu, jika Anda ingin menggunakan metode yang sudah ada dalam kelas `Queue` untuk mengimplementasikan `get_min`, berikut adalah caranya:
+
+```python
+def get_min(queue):
+    if queue.get_length() == 0:
+        return None
+
+    minimum = queue.front()
+    
+    # Buat antrian sementara untuk menyimpan elemen sementara
+    temp_queue = Queue()
+
+    while queue.get_length() > 0:
+        value = queue.dequeue()
+        if value < minimum:
+            minimum = value
+        temp_queue.enqueue(value)
+
+    # Kembalikan elemen-elemen ke antrian asli
+    while temp_queue.get_length() > 0:
+        queue.enqueue(temp_queue.dequeue())
+
+    return minimum
+```
+
+Dalam perbaikan ini, kita masih menggunakan metode yang ada dalam kelas `Queue` untuk mengakses dan memanipulasi antrian. Ini seharusnya memungkinkan Anda untuk mencari nilai minimum dalam antrian tanpa melanggar aturan "TIDAK BOLEH AKSES DATA LANGSUNG" yang diberikan.
